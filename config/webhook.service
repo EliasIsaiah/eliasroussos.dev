@@ -1,0 +1,12 @@
+[Unit]
+Description=webhook server for ci
+[Service]
+Type=simple
+User=elias
+groups=elias
+WorkingDirectory=/opt/hooks
+ExecStart=/usr/local/bin/webhook -hooks /opt/hooks/hooks.json -verbose
+Restart=on-failure
+PrivateTmp=true
+[Install]
+WantedBy=default.target
